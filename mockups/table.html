@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Five Pawns — Table</title>
+<link rel="stylesheet" href="style.css">
+<style>
+	.screen { --ca: 1.3; }
+	.table { left: 150px; top: 66px; width: 1620px; height: 946px; }
+
+	.hud-tl { position: absolute; left: 206px; top: 104px; z-index: 6; line-height: 1.05; }
+	.hud-tl strong { font-family: "Bevan", serif; font-weight: 400; font-size: 34px; text-transform: uppercase; color: var(--diep); display: block; margin-bottom: 4px; }
+
+	.tricks { position: absolute; right: 206px; top: 100px; z-index: 6; width: 300px; padding: 14px 18px 16px; background: rgba(10, 6, 4, .62); border: 2px solid rgba(216, 194, 148, .4); border-radius: 4px; }
+	.tricks h2 { font-family: "Bevan", serif; font-weight: 400; font-size: 20px; text-transform: uppercase; color: var(--do); letter-spacing: .03em; }
+	.tricks .note { font-size: 24px; color: var(--do-sang); margin-bottom: 6px; }
+	.tricks li { list-style: none; display: flex; justify-content: space-between; font-size: 28px; line-height: 1.25; }
+	.tricks li.safe { color: #b9a98e; }
+
+	.house { left: 760px; top: 92px; display: flex; gap: 18px; align-items: center; padding-right: 22px; }
+	.house .seal-han { font-size: 72px; color: var(--son); line-height: 1; filter: url(#woodcut); }
+	.seat-left { left: 206px; top: 380px; width: 286px; }
+	.seat-right { right: 206px; top: 380px; width: 286px; }
+	.seat-you { left: 206px; top: 806px; width: 330px; }
+	.chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+	.chip { font-family: "VT323", monospace; font-size: 22px; color: var(--do-sang); background: var(--son); padding: 1px 9px 2px; border-radius: 3px; }
+
+	.backs { position: absolute; z-index: 4; display: flex; }
+	.backs .card + .card { margin-left: -40px; }
+	.backs-house { left: 1190px; top: 104px; }
+	.backs-left { left: 206px; top: 588px; }
+	.backs-right { right: 206px; top: 588px; flex-direction: row-reverse; }
+	.backs-right .card + .card { margin-left: 0; margin-right: -40px; }
+
+	.slot { position: absolute; z-index: 4; display: flex; gap: 10px; }
+	.slot .card { --w: 56px; --h: 191px; }
+	.slot-top { left: 894px; top: 248px; }
+	.slot-left { left: 610px; top: 400px; transform: rotate(-4deg); }
+	.slot-right { left: 1138px; top: 400px; }
+	.slot-you { left: 894px; top: 488px; }
+	.empty { width: 56px; height: 191px; border: 2px dashed rgba(216, 194, 148, .45); border-radius: 7px; }
+	.slot-label { position: absolute; z-index: 5; font-size: 24px; color: #cdbb98; width: 174px; text-align: center; }
+	.call { position: absolute; z-index: 5; left: 960px; top: 466px; transform: translate(-50%, -50%) rotate(-2deg); }
+	.call.plaque { padding: 8px 16px 10px; text-align: center; }
+	.call .name { font-size: 22px; }
+	.call .big { font-family: "Bevan", serif; font-size: 40px; color: var(--son); line-height: 1; }
+
+	.hand { position: absolute; left: 960px; top: 722px; width: 0; height: 0; z-index: 20; perspective: 1000px; }
+	.hand .card { --w: 100px; --h: 342px; position: absolute; left: 0; top: 0; transform: translate(calc(-50% + var(--x)), calc(var(--y) + var(--lift, 0px))) rotate(var(--rot)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); cursor: pointer; }
+	.hand .card.sel { --lift: -40px; filter: drop-shadow(0 30px 26px rgba(0,0,0,.75)); }
+
+	.actions { position: absolute; right: 170px; bottom: 96px; z-index: 22; display: flex; flex-direction: column; align-items: flex-end; gap: 18px; }
+	.actions .seal { font-size: 34px; padding: 18px 30px 20px; }
+	.blood.b1 { left: 230px; top: 640px; }
+	.blood.b2 { left: 1330px; top: 236px; opacity: .7; }
+	.blood.b3 { left: 560px; top: 700px; opacity: .85; }
+	.blood.b4 { left: 1180px; top: 760px; opacity: .8; }
+</style>
+</head>
+<body>
+<main class="screen">
+	<canvas class="swirl" data-mode="table"></canvas>
+	<div class="table"></div>
+	<!-- 4 lần mất ngón trong phiên: 3 của bạn, 1 của Nhà Cái -->
+	<canvas class="blood b1" data-seed="7" width="44" height="34"></canvas>
+	<canvas class="blood b2" data-seed="3" width="26" height="18"></canvas>
+	<canvas class="blood b3" data-seed="21" width="30" height="20"></canvas>
+	<canvas class="blood b4" data-seed="13" width="28" height="20"></canvas>
+
+	<div class="hud-tl hud ca"><strong>Stage I · Hand 6</strong><span class="dim">Trick 1</span></div>
+
+	<aside class="tricks">
+		<h2>Tricks taken</h2>
+		<p class="note hud">fewest → the Block<br>Final winner safe</p>
+		<ul class="hud">
+			<li><span>You</span><span>0</span></li>
+			<li><span>Tú</span><span>0</span></li>
+			<li><span>The House</span><span>0</span></li>
+			<li class="safe"><span>Effigy</span><span>never cut</span></li>
+		</ul>
+	</aside>
+
+	<section class="plaque house" aria-label="The House">
+		<span class="seal-han han-font">莊</span>
+		<div>
+			<div class="name">The House</div>
+			<div class="role">leading</div>
+			<div class="row"><span data-hand="pinky"></span><span class="tally">0 tricks</span></div>
+		</div>
+	</section>
+	<div class="backs backs-house"><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div></div>
+
+	<section class="plaque seat-left" aria-label="Tú">
+		<div class="name">Tú</div>
+		<div class="role">teammate · online</div>
+		<div class="row"><span data-hand=""></span><span class="tally">0 tricks</span></div>
+	</section>
+	<div class="backs backs-left"><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div></div>
+
+	<section class="plaque seat-right" aria-label="Effigy">
+		<div class="name">Effigy</div>
+		<div class="role">bot · never cut</div>
+		<div class="row"><span class="tally">0 tricks</span></div>
+	</section>
+	<div class="backs backs-right"><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div><div data-back class="small"></div></div>
+
+	<div class="slot slot-top"><div data-back></div><div data-back></div></div>
+	<div class="slot slot-left"><div data-back></div><div data-back></div></div>
+	<div class="slot slot-right"><div class="empty"></div><div class="empty"></div></div>
+	<p class="slot-label hud" style="left:1124px; top:596px">choosing…</p>
+	<div class="slot slot-you"><div class="empty"></div><div class="empty"></div></div>
+	<div class="plaque call"><div class="name">Calls</div><div class="big">2</div></div>
+
+	<section class="plaque seat-you" aria-label="You">
+		<div class="name">You</div>
+		<div class="role">2 fingers left</div>
+		<div class="row"><span data-hand="pinky,ring,middle" data-size="64"></span><span class="tally">0 tricks</span></div>
+		<div class="chips"><span class="chip">−1 charm slot</span><span class="chip">no auto-sort</span><span class="chip">no history</span></div>
+	</section>
+
+	<!-- Mất ngón Áp út: không tự xếp bài, nên tay bài để lộn xộn -->
+	<div class="hand" aria-label="Your hand: 8 cards, unsorted">
+		<div data-card="r6" style="--x:-336px; --y:29px; --rot:-12.6deg"></div>
+		<div data-card="b0" style="--x:-240px; --y:15px; --rot:-9deg"></div>
+		<div data-card="r3" class="sel" style="--x:-144px; --y:5px; --rot:-5.4deg"></div>
+		<div data-card="b2" style="--x:-48px; --y:1px; --rot:-1.8deg"></div>
+		<div data-card="r0" style="--x:48px; --y:1px; --rot:1.8deg"></div>
+		<div data-card="r3" class="sel" style="--x:144px; --y:5px; --rot:5.4deg; --rx:9deg; --ry:-16deg"></div>
+		<div data-card="b1" style="--x:240px; --y:15px; --rot:9deg"></div>
+		<div data-card="r5" style="--x:336px; --y:29px; --rot:12.6deg"></div>
+	</div>
+
+	<div class="actions">
+		<button class="ghost">Clear</button>
+		<button class="seal">Lay 2 down<span class="sub">Pair of Red Chariots</span></button>
+	</div>
+
+	<p class="synthetic">illustrative data</p>
+	<div class="crt"></div>
+</main>
+<script src="fx.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+/* Five Pawns — mockup tĩnh 1920×1080. Dùng chung cho title / table / execution. */
+@import url("https://fonts.googleapis.com/css2?family=Bevan&family=Noto+Serif+TC:wght@900&family=VT323&display=block");
+
+:root {
+	--than: #0e0a07;          /* đen than tre: nền */
+	--muc: #1b1310;           /* mực in trên giấy dó */
+	--son: #b0241a;           /* đỏ son: chất màu chính */
+	--son-sau: #6e150f;       /* son trầm, lưng bài */
+	--do: #d8c294;            /* giấy dó cũ */
+	--do-sang: #eadcb4;
+	--do-toi: #a88f5e;
+	--diep: #f1e9d6;          /* trắng điệp: chữ sáng trên nền tối */
+	--dong: #c49a45;          /* đồng thau: viền kim loại mảnh */
+	--go: #2a170d;            /* gỗ mít sẫm */
+	--ca: 1;                  /* hệ số chromatic aberration */
+
+	--medallion: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='%23e8dab4' stroke='%239e2418' stroke-width='4'><circle cx='80' cy='50' r='16'/><circle cx='71.2' cy='71.2' r='16'/><circle cx='50' cy='80' r='16'/><circle cx='28.8' cy='71.2' r='16'/><circle cx='20' cy='50' r='16'/><circle cx='28.8' cy='28.8' r='16'/><circle cx='50' cy='20' r='16'/><circle cx='71.2' cy='28.8' r='16'/></g><circle cx='50' cy='50' r='31' fill='%23e8dab4'/></svg>");
+	--paper-tex: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.035 0.9' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 0.32  0 0 0 0 0.22  0 0 0 0 0.08  0 0 0 0.55 -0.12'/></filter><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' seed='9'/><feColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0 0.1  0 0 0 0.4 -0.05'/></filter><rect width='100%' height='100%' filter='url(%23f)'/><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+	--grain-tex: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600'><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='0.0035 0.09' numOctaves='4' seed='2'/><feColorMatrix values='0 0 0 0 0.05  0 0 0 0 0.02  0 0 0 0 0.01  0 0 0 1.1 -0.35'/></filter><rect width='100%' height='100%' filter='url(%23w)'/></svg>");
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+::selection { background: var(--son); color: var(--diep); }
+
+html, body { width: 1920px; height: 1080px; background: #000; overflow: hidden; }
+body { font-family: "VT323", monospace; color: var(--diep); -webkit-font-smoothing: antialiased; }
+
+.screen { position: relative; width: 1920px; height: 1080px; overflow: hidden; border-radius: 34px; background: var(--than); isolation: isolate; }
+
+/* ---------- Nền xoáy (canvas độ phân giải thấp, phóng to pixelated) ---------- */
+.swirl { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; z-index: 0; }
+
+/* ---------- Hậu kỳ CRT ---------- */
+.crt { position: absolute; inset: 0; pointer-events: none; z-index: 50; border-radius: 34px; }
+.crt::before { /* scanline + lưới RGB rất nhẹ */
+	content: ""; position: absolute; inset: 0;
+	background:
+		repeating-linear-gradient(to bottom, rgba(0,0,0,.28) 0 1px, transparent 1px 4px),
+		repeating-linear-gradient(to right, rgba(255,40,40,.035) 0 1px, rgba(40,255,120,.025) 1px 2px, rgba(60,120,255,.035) 2px 3px);
+	mix-blend-mode: multiply;
+}
+.crt::after { /* cong viền + vignette + vệt sáng kính */
+	content: ""; position: absolute; inset: 0; border-radius: 34px;
+	background:
+		radial-gradient(ellipse 60% 40% at 22% 12%, rgba(255,240,220,.07), transparent 70%),
+		radial-gradient(ellipse 120% 120% at 50% 50%, transparent 58%, rgba(0,0,0,.55) 82%, rgba(0,0,0,.92) 100%);
+	box-shadow: inset 0 0 120px 30px rgba(0,0,0,.75), inset 0 0 0 3px rgba(0,0,0,.9);
+}
+
+/* Chromatic aberration cho chữ sáng trên nền tối. --ca tăng dần qua từng màn. */
+.ca { text-shadow: calc(-2px * var(--ca)) 0 rgba(255, 30, 50, .55), calc(2px * var(--ca)) 0 rgba(30, 200, 255, .45); }
+
+/* ---------- Chữ ---------- */
+.carved { font-family: "Bevan", serif; text-transform: uppercase; letter-spacing: .02em; }
+.han-font { font-family: "Noto Serif TC", serif; font-weight: 900; }
+.hud { font-family: "VT323", monospace; font-size: 30px; letter-spacing: .04em; color: var(--diep); }
+.hud .dim { color: #b9a98e; }
+
+/* ---------- Lá bài: khổ 120×410 như asset đã duyệt (assets/cards) ---------- */
+.card {
+	--w: 110px; --h: 376px;
+	position: relative; width: var(--w); height: var(--h); flex: none;
+	border-radius: 4px;
+	display: flex; flex-direction: column; align-items: center;
+	transform-style: preserve-3d;
+	transition: transform .35s cubic-bezier(.16, 1, .3, 1);
+}
+.card.face { filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .65)); }
+.card.face img { width: 100%; height: 100%; display: block; }
+
+/* Lưng bài: son trầm, hoa văn đồng tiền khắc */
+.card.back {
+	background:
+		radial-gradient(circle, transparent 46%, rgba(20, 6, 4, .75) 47% 53%, transparent 54%) 0 0 / 22px 22px,
+		radial-gradient(circle, transparent 46%, rgba(20, 6, 4, .75) 47% 53%, transparent 54%) 11px 11px / 22px 22px,
+		var(--paper-tex),
+		linear-gradient(170deg, #8c1e15, var(--son-sau));
+	box-shadow:
+		inset 0 0 0 3px var(--muc), inset 0 0 0 7px var(--do), inset 0 0 0 9px var(--muc),
+		inset 0 0 26px rgba(0, 0, 0, .55), 0 10px 22px rgba(0, 0, 0, .6);
+	justify-content: center;
+}
+.card.back::after {
+	content: "五"; font-family: "Noto Serif TC", serif; font-weight: 900; color: var(--do);
+	font-size: calc(var(--w) * .34); width: calc(var(--w) * .56); aspect-ratio: 1; display: grid; place-items: center;
+	border-radius: 50%; background: var(--son-sau); box-shadow: 0 0 0 3px var(--do), 0 0 0 7px var(--son-sau), 0 0 0 9px var(--do);
+	filter: url(#woodcut);
+}
+.card.small { --w: 44px; --h: 150px; }
+.card.small.back::after { box-shadow: 0 0 0 2px var(--do); }
+
+/* ---------- Bàn gỗ sơn mài ---------- */
+.table {
+	position: absolute; z-index: 1;
+	border-radius: 40px;
+	background: var(--grain-tex), radial-gradient(ellipse at 50% 45%, #4a2a17, var(--go) 60%, #160b06);
+	box-shadow: 0 0 0 16px #120a07, 0 0 0 18px var(--son-sau), 0 0 0 26px #0b0604, 0 40px 90px rgba(0, 0, 0, .8), inset 0 0 0 10px rgba(14, 8, 5, .9), inset 0 0 0 12px rgba(196, 154, 69, .55), inset 0 0 160px rgba(0, 0, 0, .7);
+}
+.table::after { /* lớp sơn mài: vệt bóng dài trên mặt bàn */
+	content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+	background: linear-gradient(115deg, transparent 30%, rgba(255, 220, 180, .06) 42%, rgba(255, 220, 180, .11) 47%, transparent 58%);
+}
+.blood { position: absolute; image-rendering: pixelated; z-index: 2; opacity: .92; }
+
+/* ---------- Bảng tên (tấm giấy dó dán) ---------- */
+.plaque {
+	position: absolute; z-index: 5;
+	background: var(--paper-tex), linear-gradient(170deg, var(--do-sang), var(--do));
+	color: var(--muc); border-radius: 4px; padding: 12px 18px 14px;
+	box-shadow: inset 0 0 0 2px var(--muc), inset 0 0 0 5px var(--do-sang), inset 0 0 0 6px var(--muc), 0 10px 26px rgba(0, 0, 0, .65);
+}
+.plaque .name { font-family: "Bevan", serif; font-size: 30px; text-transform: uppercase; letter-spacing: .03em; line-height: 1; }
+.plaque .role { font-family: "VT323", monospace; font-size: 24px; color: #4b3b2c; line-height: 1.1; margin-top: 4px; }
+.plaque .row { display: flex; align-items: flex-end; gap: 14px; margin-top: 10px; }
+.hand-icon { display: inline-flex; color: var(--muc); }
+.tally { font-family: "VT323", monospace; font-size: 24px; color: #4b3b2c; }
+
+/* ---------- Nút con dấu ---------- */
+.seal {
+	font-family: "Bevan", serif; text-transform: uppercase; letter-spacing: .04em;
+	border: 0; cursor: pointer; color: var(--do-sang);
+	background: var(--paper-tex), var(--son);
+	padding: 22px 40px 24px; border-radius: 6px; transform: rotate(-1.5deg);
+	box-shadow: inset 0 0 0 4px var(--do-sang), inset 0 0 0 8px var(--son), inset 0 0 0 10px var(--do-sang), 0 12px 28px rgba(0, 0, 0, .7);
+	transition: transform .25s cubic-bezier(.16, 1, .3, 1), filter .25s;
+}
+.seal:hover { transform: rotate(-1.5deg) translateY(-3px) scale(1.02); filter: brightness(1.1); }
+.seal:focus-visible { outline: 3px solid var(--do-sang); outline-offset: 6px; }
+.seal .sub { display: block; font-family: "VT323", monospace; text-transform: none; font-size: 24px; letter-spacing: .02em; margin-top: 6px; color: #f3d9c8; }
+.ghost {
+	font-family: "VT323", monospace; font-size: 30px; color: var(--diep); background: rgba(14, 10, 7, .55);
+	border: 2px solid rgba(216, 194, 148, .55); border-radius: 4px; padding: 10px 22px; cursor: pointer;
+}
+.ghost:hover { border-color: var(--do-sang); }
+.ghost:focus-visible { outline: 3px solid var(--do-sang); outline-offset: 4px; }
+
+.synthetic { position: absolute; z-index: 40; right: 54px; bottom: 36px; font-size: 22px; color: #8d7d66; }

@@ -1,0 +1,820 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-19T05:39:03.556Z",
+  "title": "Design System: Five Pawns",
+  "extensions": {
+    "colorMeta": {
+      "than": {
+        "role": "neutral",
+        "displayName": "Đen than tre",
+        "canonical": "#0e0a07",
+        "tonalRamp": [
+          "#272320",
+          "#3d3a38",
+          "#54514f",
+          "#6a6866",
+          "#817f7d",
+          "#9e9d9c",
+          "#bebdbc",
+          "#dcdbdb"
+        ]
+      },
+      "muc": {
+        "role": "neutral",
+        "displayName": "Mực in",
+        "canonical": "#1b1310",
+        "tonalRamp": [
+          "#2b2320",
+          "#413a38",
+          "#57514f",
+          "#6d6866",
+          "#847f7e",
+          "#a19d9c",
+          "#c0bebd",
+          "#dddcdb"
+        ]
+      },
+      "son": {
+        "role": "primary",
+        "displayName": "Đỏ son",
+        "canonical": "#b0241a",
+        "tonalRamp": [
+          "#68150f",
+          "#ad2319",
+          "#b93d34",
+          "#c35850",
+          "#cc726c",
+          "#d99490",
+          "#e6b9b6",
+          "#f2dcda"
+        ]
+      },
+      "son-sau": {
+        "role": "primary",
+        "displayName": "Son trầm",
+        "canonical": "#6e150f",
+        "tonalRamp": [
+          "#6b140f",
+          "#7d2d27",
+          "#8c4641",
+          "#9c5f5a",
+          "#ab7774",
+          "#bf9895",
+          "#d5bbb9",
+          "#e9dbda"
+        ]
+      },
+      "son-xin": {
+        "role": "primary",
+        "displayName": "Son xỉn (nút khóa)",
+        "canonical": "#6e2a22",
+        "tonalRamp": [
+          "#27100d",
+          "#401915",
+          "#5a231c",
+          "#82483f",
+          "#9e7066",
+          "#b9978d",
+          "#d4bfb4",
+          "#e8ddd2"
+        ]
+      },
+      "do": {
+        "role": "neutral",
+        "displayName": "Giấy dó cũ",
+        "canonical": "#d8c294",
+        "tonalRamp": [
+          "#2a261d",
+          "#463f30",
+          "#635944",
+          "#7f7257",
+          "#9b8b6a",
+          "#c0ac83",
+          "#e0cfaa",
+          "#f4ede0"
+        ]
+      },
+      "do-sang": {
+        "role": "neutral",
+        "displayName": "Giấy dó sáng",
+        "canonical": "#eadcb4",
+        "tonalRamp": [
+          "#29261f",
+          "#444034",
+          "#5f5949",
+          "#7a735e",
+          "#958c73",
+          "#b8ad8e",
+          "#ded1ab",
+          "#f6f0df"
+        ]
+      },
+      "diep": {
+        "role": "neutral",
+        "displayName": "Trắng điệp",
+        "canonical": "#f1e9d6",
+        "tonalRamp": [
+          "#282623",
+          "#42403a",
+          "#5c5952",
+          "#777369",
+          "#918c81",
+          "#b3ad9f",
+          "#d8d1c0",
+          "#f6f1e5"
+        ]
+      },
+      "dong": {
+        "role": "secondary",
+        "displayName": "Đồng thau (chỉ kim loại mảnh)",
+        "canonical": "#c49a45",
+        "tonalRamp": [
+          "#302611",
+          "#503f1c",
+          "#705827",
+          "#8f7132",
+          "#af8a3e",
+          "#cda961",
+          "#e0ca9e",
+          "#f2e9d7"
+        ]
+      },
+      "go": {
+        "role": "neutral",
+        "displayName": "Gỗ mít sẫm",
+        "canonical": "#2a170d",
+        "tonalRamp": [
+          "#342218",
+          "#493931",
+          "#5f5049",
+          "#746861",
+          "#8a7f7a",
+          "#a59d99",
+          "#c3bebb",
+          "#dfdcdb"
+        ]
+      },
+      "go-khung": {
+        "role": "neutral",
+        "displayName": "Gỗ khung đao",
+        "canonical": "#4a2a16",
+        "tonalRamp": [
+          "#1c1009",
+          "#2c190e",
+          "#3d2312",
+          "#644835",
+          "#86705e",
+          "#a99788",
+          "#cbbfb1",
+          "#e5ddd0"
+        ]
+      },
+      "go-thot": {
+        "role": "neutral",
+        "displayName": "Gỗ thớt cắt ngang thớ",
+        "canonical": "#6b4424",
+        "tonalRamp": [
+          "#26180e",
+          "#3e2816",
+          "#57371e",
+          "#805e41",
+          "#9c8168",
+          "#b7a38e",
+          "#d3c6b5",
+          "#e8e0d2"
+        ]
+      },
+      "gai": {
+        "role": "neutral",
+        "displayName": "Dây gai",
+        "canonical": "#9a7843",
+        "tonalRamp": [
+          "#342817",
+          "#584427",
+          "#7d6136",
+          "#a88a5b",
+          "#baa27c",
+          "#cdbb9c",
+          "#dfd3bd",
+          "#ede5d5"
+        ]
+      },
+      "gai-toi": {
+        "role": "neutral",
+        "displayName": "Gai tối (sọc xoắn)",
+        "canonical": "#3c2a14",
+        "tonalRamp": [
+          "#181009",
+          "#25190d",
+          "#322311",
+          "#584833",
+          "#7d705d",
+          "#a29787",
+          "#c8bfb1",
+          "#e3ddd0"
+        ]
+      },
+      "thep": {
+        "role": "neutral",
+        "displayName": "Thép đại đao",
+        "canonical": "#2b2622",
+        "tonalRamp": [
+          "#130f0d",
+          "#1b1715",
+          "#241f1c",
+          "#49443f",
+          "#726d66",
+          "#9b968d",
+          "#c3beb4",
+          "#e2ddd2"
+        ]
+      },
+      "luoi": {
+        "role": "neutral",
+        "displayName": "Lưỡi đã mài",
+        "canonical": "#cfc6b6",
+        "tonalRamp": [
+          "#443f39",
+          "#756f66",
+          "#a79f92",
+          "#d5ccbd",
+          "#ddd5c6",
+          "#e4ded0",
+          "#ece6d9",
+          "#f2ede0"
+        ]
+      },
+      "da": {
+        "role": "neutral",
+        "displayName": "Da bàn tay",
+        "canonical": "#e0c497",
+        "tonalRamp": [
+          "#493e30",
+          "#7f6e55",
+          "#b59e7a",
+          "#e3cba3",
+          "#e8d4b2",
+          "#ecddc2",
+          "#f1e6d2",
+          "#f4eddd"
+        ]
+      },
+      "tro-sang": {
+        "role": "neutral",
+        "displayName": "Tro sáng",
+        "canonical": "#b9a98e",
+        "tonalRamp": [
+          "#2a2620",
+          "#453f35",
+          "#61584a",
+          "#7d7260",
+          "#988b75",
+          "#bbac92",
+          "#d6ccbc",
+          "#eeebe4"
+        ]
+      },
+      "muc-nhat": {
+        "role": "neutral",
+        "displayName": "Mực nhạt",
+        "canonical": "#4b3b2c",
+        "tonalRamp": [
+          "#2f251b",
+          "#4d3d2e",
+          "#625447",
+          "#786c60",
+          "#8d8379",
+          "#a9a19a",
+          "#c7c2bd",
+          "#e2e0dd"
+        ]
+      },
+      "mau-kho": {
+        "role": "tertiary",
+        "displayName": "Máu khô",
+        "canonical": "#3a0503",
+        "tonalRamp": [
+          "#4a1a18",
+          "#5d3230",
+          "#704a48",
+          "#836261",
+          "#967a79",
+          "#af9998",
+          "#c9bbba",
+          "#e2dada"
+        ]
+      },
+      "mau": {
+        "role": "tertiary",
+        "displayName": "Máu",
+        "canonical": "#6a0f0a",
+        "tonalRamp": [
+          "#6d130e",
+          "#7c2c28",
+          "#8c4541",
+          "#9b5e5b",
+          "#aa7774",
+          "#bf9795",
+          "#d4bab9",
+          "#e8dbda"
+        ]
+      },
+      "mau-sau": {
+        "role": "tertiary",
+        "displayName": "Máu sẫm",
+        "canonical": "#530a07",
+        "tonalRamp": [
+          "#5c1614",
+          "#6d2f2c",
+          "#7e4745",
+          "#8f605e",
+          "#a07877",
+          "#b79897",
+          "#cfbaba",
+          "#e5dada"
+        ]
+      },
+      "mau-tuoi": {
+        "role": "tertiary",
+        "displayName": "Máu tươi",
+        "canonical": "#9b2216",
+        "tonalRamp": [
+          "#65160e",
+          "#9d271b",
+          "#a94136",
+          "#b55b52",
+          "#c0756d",
+          "#d09690",
+          "#e0bab7",
+          "#efdcda"
+        ]
+      },
+      "mau-bang": {
+        "role": "tertiary",
+        "displayName": "Máu thấm băng",
+        "canonical": "#7a120c",
+        "tonalRamp": [
+          "#2a0906",
+          "#470c08",
+          "#630f0a",
+          "#8d332d",
+          "#a56058",
+          "#be8d83",
+          "#d7b9af",
+          "#eadbcf"
+        ]
+      },
+      "card-paper": {
+        "role": "neutral",
+        "displayName": "Giấy lá bài · bảng khoá lá bài",
+        "canonical": "#CBB793",
+        "tonalRamp": [
+          "#3d372c",
+          "#665c4a",
+          "#8e8067",
+          "#b7a584",
+          "#d5c5a9",
+          "#e2d7c4",
+          "#efe9df",
+          "#faf8f4"
+        ]
+      },
+      "card-burn": {
+        "role": "neutral",
+        "displayName": "Mép cháy · bảng khoá lá bài",
+        "canonical": "#7A6648",
+        "tonalRamp": [
+          "#251f16",
+          "#3d3324",
+          "#554732",
+          "#6e5c41",
+          "#95856d",
+          "#b6ab9a",
+          "#d7d1c8",
+          "#f2f0ed"
+        ]
+      },
+      "card-mould": {
+        "role": "neutral",
+        "displayName": "Mốc · bảng khoá lá bài",
+        "canonical": "#2E3529",
+        "tonalRamp": [
+          "#0e100c",
+          "#171a14",
+          "#20251d",
+          "#293025",
+          "#585d54",
+          "#8c9089",
+          "#c0c2bf",
+          "#eaebea"
+        ]
+      },
+      "card-ink": {
+        "role": "neutral",
+        "displayName": "Mực lá bài · bảng khoá lá bài",
+        "canonical": "#14110F",
+        "tonalRamp": [
+          "#060504",
+          "#0a0808",
+          "#0e0c0a",
+          "#120f0e",
+          "#43413f",
+          "#7e7c7b",
+          "#b8b8b7",
+          "#e8e7e7"
+        ]
+      },
+      "card-green": {
+        "role": "secondary",
+        "displayName": "Xanh rêu (chỉ trong tranh) · bảng khoá lá bài",
+        "canonical": "#4A6648",
+        "tonalRamp": [
+          "#161f16",
+          "#253324",
+          "#344732",
+          "#435c41",
+          "#6e856d",
+          "#9bab9a",
+          "#c9d1c8",
+          "#edf0ed"
+        ]
+      },
+      "card-green-dk": {
+        "role": "secondary",
+        "displayName": "Xanh rêu sẫm (chỉ trong tranh) · bảng khoá lá bài",
+        "canonical": "#2B3D2A",
+        "tonalRamp": [
+          "#0d120d",
+          "#161e15",
+          "#1e2b1d",
+          "#273726",
+          "#556455",
+          "#8a948a",
+          "#bfc5bf",
+          "#eaecea"
+        ]
+      },
+      "card-ochre": {
+        "role": "secondary",
+        "displayName": "Hoàng thổ (chỉ trong tranh) · bảng khoá lá bài",
+        "canonical": "#BFA038",
+        "tonalRamp": [
+          "#393011",
+          "#60501c",
+          "#867027",
+          "#ac9032",
+          "#ccb360",
+          "#dccb92",
+          "#ece2c3",
+          "#f9f6eb"
+        ]
+      },
+      "card-ochre-dk": {
+        "role": "secondary",
+        "displayName": "Hoàng thổ sẫm (chỉ trong tranh) · bảng khoá lá bài",
+        "canonical": "#856B22",
+        "tonalRamp": [
+          "#28200a",
+          "#423611",
+          "#5d4b18",
+          "#78601f",
+          "#9d894e",
+          "#bcae85",
+          "#dad3bd",
+          "#f3f0e9"
+        ]
+      },
+      "card-seal": {
+        "role": "primary",
+        "displayName": "Son ấn (hoa thị bộ Đỏ) · bảng khoá lá bài",
+        "canonical": "#9E2622",
+        "tonalRamp": [
+          "#2f0b0a",
+          "#4f1311",
+          "#6f1b18",
+          "#8e221f",
+          "#b1514e",
+          "#ca8885",
+          "#e2bebd",
+          "#f5e9e9"
+        ]
+      },
+      "card-blood": {
+        "role": "tertiary",
+        "displayName": "Máu lá bài · bảng khoá lá bài",
+        "canonical": "#8E1414",
+        "tonalRamp": [
+          "#2b0606",
+          "#470a0a",
+          "#630e0e",
+          "#801212",
+          "#a54343",
+          "#c17e7e",
+          "#ddb8b8",
+          "#f4e8e8"
+        ]
+      },
+      "card-blood-dk": {
+        "role": "tertiary",
+        "displayName": "Máu khô lá bài · bảng khoá lá bài",
+        "canonical": "#4A0A0A",
+        "tonalRamp": [
+          "#160303",
+          "#250505",
+          "#340707",
+          "#430909",
+          "#6e3b3b",
+          "#9b7878",
+          "#c9b6b6",
+          "#ede6e6"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Bevan khắc · Display",
+        "purpose": "Tên game trên màn tiêu đề; woodcut + chromatic aberration."
+      },
+      "headline": {
+        "displayName": "Bevan khắc · Headline",
+        "purpose": "Tên pha lớn (\"Execution\", 58px); woodcut + CA."
+      },
+      "title": {
+        "displayName": "Bevan khắc · Title",
+        "purpose": "Tên trên bảng, tiêu đề bảng, chữ nút con dấu, mục menu, nhãn số La Mã của dây; luôn viết hoa."
+      },
+      "body": {
+        "displayName": "VT323 CRT · Body",
+        "purpose": "HUD, số liệu ván, biên bản, ghost button."
+      },
+      "label": {
+        "displayName": "VT323 CRT · Label",
+        "purpose": "Vai trò, chip, dòng phụ dưới nút."
+      },
+      "han": {
+        "displayName": "Noto Serif TC 900 · Hán (ấn)",
+        "purpose": "Ấn 五 trên lưng bài, ấn 莊 The House, phụ đề 五子; luôn có woodcut."
+      },
+      "card-han": {
+        "displayName": "LXGW WenKai TC 700 · Hán mặt bài",
+        "purpose": "Chữ Hán khải thư trong vùng chữ trên/dưới của lá (68px trên khổ 120, viền mực 2.4); nướng sẵn vào PNG."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-on-table",
+        "value": "drop-shadow(0 10px 14px rgba(0,0,0,.65))",
+        "purpose": "Bóng mặt lá, theo mép cháy rách trong suốt của PNG."
+      },
+      {
+        "name": "on-table",
+        "value": "0 10px 22px rgba(0,0,0,.6)",
+        "purpose": "Lưng bài, bảng tên, nút con dấu nằm trên bàn."
+      },
+      {
+        "name": "lifted-card",
+        "value": "0 34px 40px rgba(0,0,0,.7)",
+        "purpose": "Lá đang chọn, nhấc 40px."
+      },
+      {
+        "name": "table-on-ground",
+        "value": "0 40px 90px rgba(0,0,0,.8)",
+        "purpose": "Bàn sơn mài trên nền xoáy."
+      },
+      {
+        "name": "double-carved-border",
+        "value": "inset 0 0 0 3px #1b1310, inset 0 0 0 7px #d8c294, inset 0 0 0 9px #1b1310",
+        "purpose": "Viền khắc kép của lưng bài; Godot: NinePatchRect."
+      },
+      {
+        "name": "woodcut-flat-shadow",
+        "value": "fill #120804 opacity .55, no blur",
+        "purpose": "Bóng của vật minh họa in khắc (bóng đao trên thớt): mảng mực phẳng."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-lift",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Nhấc/nghiêng lá bài (0.35s), hover nút con dấu (0.25s)."
+      },
+      {
+        "name": "card-tilt",
+        "value": "rotateX ±9deg, rotateY ±11deg theo con trỏ",
+        "purpose": "Nghiêng 3D lá trên tay; lá chọn nhấc 40px."
+      },
+      {
+        "name": "ca-title",
+        "value": "1.0",
+        "purpose": "Hệ số chromatic aberration màn tiêu đề (lệch ±2px × ca)."
+      },
+      {
+        "name": "ca-table",
+        "value": "1.3",
+        "purpose": "Hệ số chromatic aberration bàn chơi."
+      },
+      {
+        "name": "ca-execution",
+        "value": "2.6",
+        "purpose": "Hệ số chromatic aberration Execution."
+      },
+      {
+        "name": "ca-rope-hover",
+        "value": "3.2",
+        "purpose": "CA khi rê chuột hoặc focus vào một dây."
+      },
+      {
+        "name": "rope-shake",
+        "value": "translateX ±2.5px, rotate ±0.5deg, 0.09s steps(2) alternate infinite",
+        "purpose": "Dây rung kiểu bước khi hover/focus; tắt khi reduced-motion."
+      },
+      {
+        "name": "tension-vignette",
+        "value": "radial ellipse 80%×75%, transparent 55% → rgba(30,0,0,.7); opacity 0→1 in 0.3s cubic-bezier(.16,1,.3,1)",
+        "purpose": "Lớp vignette đỏ đen khi rê chuột vào dây (dưới CRT)."
+      },
+      {
+        "name": "swirl-calm",
+        "value": "stops rgb(12,8,6) rgb(30,15,10) rgb(58,19,13) rgb(92,27,17); twist 1.3; speed 0.06; rings 7",
+        "purpose": "Nền xoáy màn tiêu đề; lưới 240×135, 6 bậc, nearest."
+      },
+      {
+        "name": "swirl-table",
+        "value": "stops rgb(10,7,5) rgb(24,12,8) rgb(44,16,11) rgb(66,21,14); twist 1.6; speed 0.08; rings 8",
+        "purpose": "Nền xoáy khi chia bài."
+      },
+      {
+        "name": "swirl-blood",
+        "value": "stops rgb(16,4,3) rgb(62,9,6) rgb(122,20,13) rgb(184,38,26); twist 2.8; speed 0.12; rings 11",
+        "purpose": "Nền xoáy Execution; khung cảnh nghiêng -0.6deg, phóng 1.02."
+      },
+      {
+        "name": "swirl-death-ropes",
+        "value": "speed × (1 + 0.35 × X)",
+        "purpose": "Tốc độ xoáy tỉ lệ với số Death Rope X (data-x / uniform death_ropes)."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "khung xoáy tĩnh",
+        "purpose": "Tắt chuyển động nền khi người chơi bật giảm chuyển động."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "frame",
+        "value": "1920px × 1080px (cố định, 16:9)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Lá bài mặt (Red Chariot)",
+      "kind": "card",
+      "refersTo": "card-face",
+      "description": "Asset PNG đã duyệt (120×410, xuất 3×): Hán LXGW trên/dưới, ô tranh 96×238 viền đôi, hoa thị son ấn (bộ Đỏ), máu theo seed; tên tiếng Anh ở tooltip/alt. Mặt bài là ảnh, không dựng lại bằng CSS.",
+      "html": "<div class=\"ds-card\" title=\"Red Chariot\" tabindex=\"0\"><img src=\"assets/cards/png/red_chariot.png\" alt=\"Red Chariot\"></div>",
+      "css": ".ds-card{width:110px;height:376px;border-radius:4px;filter:drop-shadow(0 10px 14px rgba(0,0,0,.65));transition:transform .35s cubic-bezier(.16,1,.3,1);cursor:pointer}.ds-card img{width:100%;height:100%;display:block}.ds-card:hover,.ds-card:focus-visible{outline:none;transform:translateY(-40px) rotateX(6deg)}"
+    },
+    {
+      "name": "Lưng bài",
+      "kind": "card",
+      "refersTo": "card-back",
+      "description": "Son trầm, hoa văn đồng tiền khắc, ấn 五 (Noto Serif TC 900) giữa lá, viền khắc kép; cùng tỉ lệ 120:410 với mặt. Bài chưa lật luôn là lưng.",
+      "html": "<div class=\"ds-back\" role=\"img\" aria-label=\"Face-down card\"><span>五</span></div>",
+      "css": ":root{--than:#0e0a07;--muc:#1b1310;--son:#b0241a;--son-sau:#6e150f;--do:#d8c294;--do-sang:#eadcb4;--diep:#f1e9d6;--dong:#c49a45;--go:#2a170d}.ds-back{width:110px;height:376px;border-radius:4px;display:grid;place-items:center;background:radial-gradient(circle,transparent 46%,rgba(20,6,4,.75) 47% 53%,transparent 54%) 0 0/22px 22px,radial-gradient(circle,transparent 46%,rgba(20,6,4,.75) 47% 53%,transparent 54%) 11px 11px/22px 22px,linear-gradient(170deg,#8c1e15,var(--son-sau));box-shadow:inset 0 0 0 3px var(--muc),inset 0 0 0 7px var(--do),inset 0 0 0 9px var(--muc),inset 0 0 26px rgba(0,0,0,.55),0 10px 22px rgba(0,0,0,.6)}.ds-back span{font-family:\"Noto Serif TC\",serif;font-weight:900;color:var(--do);font-size:37px;width:62px;aspect-ratio:1;display:grid;place-items:center;border-radius:50%;background:var(--son-sau);box-shadow:0 0 0 3px var(--do),0 0 0 7px var(--son-sau),0 0 0 9px var(--do)}"
+    },
+    {
+      "name": "Nút con dấu",
+      "kind": "button",
+      "refersTo": "seal-button",
+      "description": "Hành động chính duy nhất của màn, đóng lệch -1.5deg.",
+      "html": "<button class=\"ds-seal\">Lay 2 down<span>Pair of Red Chariots</span></button>",
+      "css": ":root{--than:#0e0a07;--muc:#1b1310;--son:#b0241a;--son-sau:#6e150f;--do:#d8c294;--do-sang:#eadcb4;--diep:#f1e9d6;--dong:#c49a45;--go:#2a170d}.ds-seal{font-family:Bevan,serif;text-transform:uppercase;letter-spacing:.04em;font-size:40px;border:0;cursor:pointer;color:var(--do-sang);background:var(--son);padding:22px 40px 24px;border-radius:6px;transform:rotate(-1.5deg);box-shadow:inset 0 0 0 4px var(--do-sang),inset 0 0 0 8px var(--son),inset 0 0 0 10px var(--do-sang),0 12px 28px rgba(0,0,0,.7);transition:transform .25s cubic-bezier(.16,1,.3,1),filter .25s}.ds-seal:hover:not(:disabled){transform:rotate(-1.5deg) translateY(-3px) scale(1.02);filter:brightness(1.1)}.ds-seal:focus-visible{outline:3px solid var(--do-sang);outline-offset:6px}.ds-seal span{display:block;font-family:VT323,monospace;text-transform:none;font-size:24px;letter-spacing:.02em;margin-top:6px;color:#f3d9c8}"
+    },
+    {
+      "name": "Nút con dấu (khóa)",
+      "kind": "button",
+      "refersTo": "seal-button-disabled",
+      "description": "Mặt nút son xỉn, dòng phụ giữ đủ tương phản để giải thích vì sao bị khóa.",
+      "html": "<button class=\"ds-seal\" disabled>Cut rope IV<span>after Tú decides · 4s</span></button>",
+      "css": ":root{--than:#0e0a07;--muc:#1b1310;--son:#b0241a;--son-sau:#6e150f;--do:#d8c294;--do-sang:#eadcb4;--diep:#f1e9d6;--dong:#c49a45;--go:#2a170d}.ds-seal{font-family:Bevan,serif;text-transform:uppercase;letter-spacing:.04em;font-size:40px;border:0;cursor:pointer;color:var(--do-sang);background:var(--son);padding:22px 40px 24px;border-radius:6px;transform:rotate(-1.5deg);box-shadow:inset 0 0 0 4px var(--do-sang),inset 0 0 0 8px var(--son),inset 0 0 0 10px var(--do-sang),0 12px 28px rgba(0,0,0,.7);transition:transform .25s cubic-bezier(.16,1,.3,1),filter .25s}.ds-seal:hover:not(:disabled){transform:rotate(-1.5deg) translateY(-3px) scale(1.02);filter:brightness(1.1)}.ds-seal:focus-visible{outline:3px solid var(--do-sang);outline-offset:6px}.ds-seal span{display:block;font-family:VT323,monospace;text-transform:none;font-size:24px;letter-spacing:.02em;margin-top:6px;color:#f3d9c8}.ds-seal:disabled{cursor:not-allowed;background:#6e2a22;color:#d9c3ae}"
+    },
+    {
+      "name": "Ghost button",
+      "kind": "button",
+      "refersTo": "ghost-button",
+      "description": "Hành động phụ trên nền tối.",
+      "html": "<button class=\"ds-ghost\">Clear</button>",
+      "css": ":root{--than:#0e0a07;--muc:#1b1310;--son:#b0241a;--son-sau:#6e150f;--do:#d8c294;--do-sang:#eadcb4;--diep:#f1e9d6;--dong:#c49a45;--go:#2a170d}.ds-ghost{font-family:VT323,monospace;font-size:30px;line-height:1.1;color:var(--diep);background:rgba(14,10,7,.55);border:2px solid rgba(216,194,148,.55);border-radius:4px;padding:10px 22px;cursor:pointer;transition:border-color .2s}.ds-ghost:hover{border-color:var(--do-sang)}.ds-ghost:focus-visible{outline:3px solid var(--do-sang);outline-offset:4px}"
+    },
+    {
+      "name": "Bảng tên + bàn tay + chip debuff",
+      "kind": "custom",
+      "refersTo": "plaque",
+      "description": "Giấy dó dán lên bàn; mạng là bàn tay 5 ngón, ngón mất quấn băng thấm máu; mỗi ngón mất một chip debuff.",
+      "html": "<section class=\"ds-plaque\"><div class=\"ds-name\">You</div><div class=\"ds-role\">2 fingers left</div><div class=\"ds-row\"><svg viewBox=\"0 0 64 56\" width=\"64\" height=\"56\" role=\"img\" aria-label=\"2 of 5 fingers, lost: pinky, ring, middle\"><rect x=\"7\" y=\"18\" width=\"10\" height=\"13\" rx=\"2\" fill=\"#eadcb4\" stroke=\"#1b1310\" stroke-width=\"1.8\"/><path d=\"M7 18 h10 v6 q-2.5 3 -5 1 q-2.5 2 -5 -1 z\" fill=\"#7a120c\"/><rect x=\"17\" y=\"18\" width=\"10\" height=\"13\" rx=\"2\" fill=\"#eadcb4\" stroke=\"#1b1310\" stroke-width=\"1.8\"/><path d=\"M17 18 h10 v6 q-2.5 3 -5 1 q-2.5 2 -5 -1 z\" fill=\"#7a120c\"/><rect x=\"27\" y=\"18\" width=\"10\" height=\"13\" rx=\"2\" fill=\"#eadcb4\" stroke=\"#1b1310\" stroke-width=\"1.8\"/><path d=\"M27 18 h10 v6 q-2.5 3 -5 1 q-2.5 2 -5 -1 z\" fill=\"#7a120c\"/><rect x=\"38\" y=\"7\" width=\"8\" height=\"25\" rx=\"4\" fill=\"#e3cc9c\" stroke=\"#1b1310\" stroke-width=\"1.6\"/><rect x=\"47\" y=\"24\" width=\"8\" height=\"20\" rx=\"4\" fill=\"#e3cc9c\" stroke=\"#1b1310\" stroke-width=\"1.6\" transform=\"rotate(-35 51 34)\"/><rect x=\"7\" y=\"27\" width=\"41\" height=\"26\" rx=\"8\" fill=\"#e3cc9c\" stroke=\"#1b1310\" stroke-width=\"1.6\"/><path d=\"M14 40 h26 M14 46 h20\" stroke=\"#1b1310\" stroke-width=\"1\" opacity=\".35\"/></svg><span class=\"ds-tally\">0 tricks</span></div><div class=\"ds-chips\"><span class=\"ds-chip\">−1 charm slot</span><span class=\"ds-chip\">no auto-sort</span><span class=\"ds-chip\">no history</span></div></section>",
+      "css": ":root{--than:#0e0a07;--muc:#1b1310;--son:#b0241a;--son-sau:#6e150f;--do:#d8c294;--do-sang:#eadcb4;--diep:#f1e9d6;--dong:#c49a45;--go:#2a170d}.ds-plaque{display:inline-block;background:repeating-linear-gradient(0deg,rgba(80,55,20,.10) 0 1px,transparent 1px 3px),linear-gradient(170deg,#eadcb4,#d8c294 45%,#c9ae78);color:var(--muc);border-radius:4px;padding:12px 18px 14px;box-shadow:inset 0 0 0 2px var(--muc),inset 0 0 0 5px var(--do-sang),inset 0 0 0 6px var(--muc),0 10px 26px rgba(0,0,0,.65)}.ds-name{font-family:Bevan,serif;font-size:30px;text-transform:uppercase;letter-spacing:.03em;line-height:1}.ds-role,.ds-tally{font-family:VT323,monospace;font-size:24px;color:#4b3b2c;line-height:1.1;margin-top:4px}.ds-row{display:flex;align-items:flex-end;gap:14px;margin-top:10px}.ds-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.ds-chip{font-family:VT323,monospace;font-size:22px;color:var(--do-sang);background:var(--son);padding:1px 9px 2px;border-radius:3px}"
+    },
+    {
+      "name": "Bảng trạng thái Take the Blade",
+      "kind": "custom",
+      "refersTo": "plaque",
+      "description": "Cửa sổ chỉ đồng đội bấm được: bảng giấy role=status có đếm ngược, không phải nút.",
+      "html": "<div class=\"ds-plaque ds-take\" role=\"status\" aria-live=\"polite\"><span class=\"ds-count\">4s</span><div class=\"ds-name\">Tú may take<br>the Blade</div><div class=\"ds-role\">teammate · 5 fingers</div></div>",
+      "css": ":root{--than:#0e0a07;--muc:#1b1310;--son:#b0241a;--son-sau:#6e150f;--do:#d8c294;--do-sang:#eadcb4;--diep:#f1e9d6;--dong:#c49a45;--go:#2a170d}.ds-plaque{display:inline-block;background:repeating-linear-gradient(0deg,rgba(80,55,20,.10) 0 1px,transparent 1px 3px),linear-gradient(170deg,#eadcb4,#d8c294 45%,#c9ae78);color:var(--muc);border-radius:4px;padding:12px 18px 14px;box-shadow:inset 0 0 0 2px var(--muc),inset 0 0 0 5px var(--do-sang),inset 0 0 0 6px var(--muc),0 10px 26px rgba(0,0,0,.65)}.ds-name{font-family:Bevan,serif;font-size:30px;text-transform:uppercase;letter-spacing:.03em;line-height:1}.ds-role,.ds-tally{font-family:VT323,monospace;font-size:24px;color:#4b3b2c;line-height:1.1;margin-top:4px}.ds-take{width:420px;padding:16px 24px 18px;transform:rotate(1.2deg)}.ds-take .ds-name,.ds-take .ds-role{font-size:26px}.ds-count{font-family:Bevan,serif;font-size:44px;color:var(--son);line-height:1;float:right;margin-left:22px}"
+    },
+    {
+      "name": "Dây gai (Execution)",
+      "kind": "custom",
+      "description": "Dây gai xoắn in khắc: keyline mực, viền sáng khi hover, sợi tô pattern sọc chéo; hover rung kiểu bước, reduced-motion tắt rung.",
+      "html": "<svg class=\"ds-rig\" viewBox=\"0 0 120 220\" role=\"group\" aria-label=\"Ropes\"><defs><pattern id=\"ds-twist\" width=\"12\" height=\"9\" patternUnits=\"userSpaceOnUse\" patternTransform=\"rotate(32)\"><rect width=\"12\" height=\"9\" fill=\"#9a7843\"/><rect width=\"12\" height=\"3.2\" fill=\"#3c2a14\"/></pattern></defs><rect x=\"0\" y=\"0\" width=\"120\" height=\"22\" fill=\"#5a331b\" stroke=\"#1b1310\" stroke-width=\"4\"/><g class=\"ds-rope\" tabindex=\"0\" role=\"button\" aria-label=\"Rope I\"><line x1=\"35\" y1=\"22\" x2=\"35\" y2=\"200\" stroke=\"transparent\" stroke-width=\"34\"/><line x1=\"35\" y1=\"22\" x2=\"35\" y2=\"200\" stroke=\"#1b1310\" stroke-width=\"15\"/><line class=\"ds-hl\" x1=\"35\" y1=\"22\" x2=\"35\" y2=\"200\" stroke=\"#eadcb4\" stroke-width=\"19\"/><line x1=\"35\" y1=\"22\" x2=\"35\" y2=\"200\" stroke=\"url(#ds-twist)\" stroke-width=\"10\"/></g><g class=\"ds-rope\" tabindex=\"0\" role=\"button\" aria-label=\"Rope II\"><line x1=\"85\" y1=\"22\" x2=\"85\" y2=\"200\" stroke=\"transparent\" stroke-width=\"34\"/><line x1=\"85\" y1=\"22\" x2=\"85\" y2=\"200\" stroke=\"#1b1310\" stroke-width=\"15\"/><line class=\"ds-hl\" x1=\"85\" y1=\"22\" x2=\"85\" y2=\"200\" stroke=\"#eadcb4\" stroke-width=\"19\"/><line x1=\"85\" y1=\"22\" x2=\"85\" y2=\"200\" stroke=\"url(#ds-twist)\" stroke-width=\"10\"/></g><g fill=\"#2b2622\" stroke=\"#d8c294\" stroke-width=\"4\"><circle cx=\"35\" cy=\"200\" r=\"10\"/><circle cx=\"85\" cy=\"200\" r=\"10\"/></g></svg>",
+      "css": ".ds-rig{width:120px;height:220px;background:#0e0a07}.ds-rope{cursor:pointer;transform-box:fill-box;transform-origin:50% 0}.ds-rope .ds-hl{opacity:0}.ds-rope:hover .ds-hl,.ds-rope:focus-visible .ds-hl{opacity:1}.ds-rope:focus-visible{outline:none}.ds-rope:hover,.ds-rope:focus-visible{animation:ds-shake .09s steps(2) infinite alternate}@keyframes ds-shake{from{transform:translateX(-2.5px) rotate(-.5deg)}to{transform:translateX(2.5px) rotate(.5deg)}}@media (prefers-reduced-motion:reduce){.ds-rope:hover,.ds-rope:focus-visible{animation:none}}"
+    },
+    {
+      "name": "Menu màn tiêu đề",
+      "kind": "nav",
+      "refersTo": "seal-button",
+      "description": "Menu dọc Bevan; mục đang chọn là con dấu son lệch -1.2deg.",
+      "html": "<ul class=\"ds-menu\"><li><a href=\"#\" aria-current=\"page\">Play offline</a></li><li><a href=\"#\">Co-op online</a></li><li><a href=\"#\">How to play</a></li><li><a href=\"#\">Settings</a></li></ul>",
+      "css": ":root{--than:#0e0a07;--muc:#1b1310;--son:#b0241a;--son-sau:#6e150f;--do:#d8c294;--do-sang:#eadcb4;--diep:#f1e9d6;--dong:#c49a45;--go:#2a170d}.ds-menu{list-style:none;display:flex;flex-direction:column;align-items:flex-start;gap:4px;background:var(--than);padding:20px}.ds-menu a{display:inline-block;font-family:Bevan,serif;text-transform:uppercase;font-size:30px;letter-spacing:.03em;color:var(--do);text-decoration:none;padding:5px 0}.ds-menu a:hover{color:var(--do-sang)}.ds-menu a:focus-visible{outline:3px solid var(--do-sang);outline-offset:6px}.ds-menu a[aria-current]{color:var(--do-sang);background:var(--son);padding:12px 26px 14px;border-radius:5px;transform:rotate(-1.2deg);box-shadow:inset 0 0 0 3px var(--do-sang),inset 0 0 0 6px var(--son),inset 0 0 0 7.5px var(--do-sang),0 10px 24px rgba(0,0,0,.6);margin-bottom:8px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Bàn thờ xét xử sơn mài",
+    "overview": "**Creative North Star: \"Bàn thờ xét xử sơn mài\"**\n\nBàn Tam Cúc là một bàn thờ xét xử: mặt gỗ mít sơn mài, lá bài là tờ tranh dân gian kinh dị in khắc trên giấy dó cũ đã ố mốc và cháy mép, và ánh sáng duy nhất đến từ một màn CRT. Mọi vật thể trên màn đều là vật thật có chất liệu (giấy, mực, son, gỗ, dây gai, thép, da, máu); giao diện không có tấm kính, không có thẻ phẳng, không có gradient trang trí. Chữ khắc slab nói giọng của bản án, chữ CRT nói giọng của máy, chữ Hán nói giọng của lá bài và của ấn. Mọi chữ trong game là tiếng Anh, theo thuật ngữ ở GDD §0 (The House, the Block, the Blade, Death Rope, Effigy).\n\nĐộ căng thẳng là một trục được đo bằng hình: nền xoáy đổi bảng màu và quay nhanh theo số Death Rope, chromatic aberration tăng hệ số, khung cảnh nghiêng dần từ màn tiêu đề tới Execution. Dân gian và kinh dị là một thế giới: máu chảy trên tranh lá bài, bộ khung đao Chặt Ngũ Chỉ in cùng nét khắc, và mỗi ngón mất để lại một vết máu trên bàn và một vết sẹo trên thớt suốt phiên chơi.\n\nMặt lá bài là asset đã duyệt, dựng từ art direction người dùng đưa (`assets/ref/tamcuc_horror_ref.webp`) bằng `tools/build_card.py`, nguồn gốc ở `assets/cards/PROVENANCE.md`; nó không được vẽ lại bằng CSS hay code. Mockup HTML là chất liệu tạm cho phần còn lại; hệ thống này được ghi theo vai trò để dựng lại bằng scene, StyleBox, NinePatch và shader trong Godot 4. Khung chuẩn 1920×1080, chuột.",
+    "keyCharacteristics": [
+      "Bảng màu UI tối ba chất: đen than, đỏ son, vàng giấy dó. Gỗ, gai, thép, da và máu là chất liệu phụ, không phải màu UI.",
+      "Lá bài có bảng màu khoá 11 màu riêng, tách khỏi bảng màu UI.",
+      "Mọi bề mặt UI sáng là giấy dó có sợi, viền khắc kép (mực, giấy, mực).",
+      "Ba giọng chữ cố định: Bevan khắc, VT323 CRT, chữ Hán (LXGW WenKai TC 700 trên mặt bài, Noto Serif TC 900 trên lưng bài và ấn).",
+      "Vật minh họa (bàn tay, bộ khung đao, tranh lá bài) vẽ kiểu in khắc gỗ: màu phẳng, nét mực dày, mép nét sần.",
+      "Hậu kỳ CRT phủ toàn khung; cường độ đi theo trạng thái game.",
+      "Pixel thô cho nền xoáy và máu trên bàn, nét khắc cho bài, chữ và vật."
+    ],
+    "rules": [
+      {
+        "name": "The Đồng Thau Hiếm Rule",
+        "body": "Đồng thau chỉ là chỉ kim loại mảnh (viền trong lòng bàn, chắn tay dao). Không dùng đồng cho nút, chữ, tiêu đề hay viền bảng.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ba Chất Rule",
+        "body": "Mọi màu UI phải là sắc độ của than, son hoặc giấy dó; vật minh họa thêm gỗ, gai, thép, da và máu. Không có màu xanh, tím hay neon nào trong UI, trừ hai vệt đỏ/lam của chromatic aberration. Xanh rêu và mốc chỉ tồn tại bên trong tranh lá bài, như vết thời gian trên giấy cũ.",
+        "section": "colors"
+      },
+      {
+        "name": "The Bảng Màu Khoá Rule",
+        "body": "Mặt lá bài chỉ dùng 11 màu `card-*`. Bộ Đen không thêm màu: nó đổi màu trong chính bảng khoá (hoàng thổ thành xanh rêu, hoàng thổ sẫm và xanh rêu thành xanh rêu sẫm, mép cháy thành mốc), máu và mực giữ nguyên. Không lấy màu `card-*` làm màu UI, không lấy màu UI vẽ lên lá.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ba Giọng Rule",
+        "body": "Mỗi chữ thuộc đúng một giọng: Bevan cho tên và phán quyết, VT323 cho số và trạng thái, chữ Hán cho bài và ấn. Không trộn giọng trong một dòng.",
+        "section": "typography"
+      },
+      {
+        "name": "The Số Là Máy Rule",
+        "body": "Mọi số liệu ván (Death Rope, phần trăm, ngón, vòng ăn) viết bằng VT323. Riêng tổng Death Rope trên biên bản (\"3 of 6\") và số đếm ngược Take the Blade được lên Bevan son, vì đó là phán quyết.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mặt Bài Gốc Rule",
+        "body": "Mặt bài chỉ có chữ Hán gốc (trên và lộn ngược dưới) và tranh; không in tên chữ Latin, số hay vạch lên lá. Tên tiếng Anh (\"Red Chariot\") chỉ sống trong tooltip và nhãn trợ năng (`alt`).",
+        "section": "typography"
+      },
+      {
+        "name": "The Một Nguồn Sáng Rule",
+        "body": "Bóng của UI giấy luôn rơi thẳng xuống, mềm, đen; độ cao càng lớn bóng càng dài và mờ. Không có bóng màu, không có glow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Căng Thẳng Là Tham Số Rule",
+        "body": "Độ căng thẳng chỉ được nâng bằng bốn núm: bảng màu và tốc độ xoáy, hệ số `ca`, vignette căng thẳng, độ nghiêng khung. Không thêm hiệu ứng mới để báo nguy.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** dựng mọi bề mặt UI sáng bằng giấy dó có sợi và viền khắc kép mực/giấy/mực.",
+      "**Do** dùng mặt lá bài từ PNG đã duyệt (`assets/cards/png`), giữ tỉ lệ 120:410; đổi mặt bài bằng cách sửa `tools/build_card.py` và dựng lại, không vẽ đè bằng CSS hay shader.",
+      "**Do** giữ mặt lá trong 11 màu khoá; bộ Đen đổi màu trong bảng khoá, máu và mực không đổi.",
+      "**Do** vẽ vật minh họa (bàn tay, khung đao, thớt) như bản in khắc gỗ: màu phẳng, keyline mực dày, đường khắc màu giấy, phủ woodcut.",
+      "**Do** giữ hệ số chromatic aberration 1.0 / 1.3 / 2.6 cho tiêu đề / bàn chơi / Execution, 3.2 khi rê chuột vào dây.",
+      "**Do** đổi bảng màu nền xoáy theo trạng thái (calm, table, blood) và tăng tốc theo số Death Rope, thay vì thêm hiệu ứng báo nguy mới.",
+      "**Do** viết mọi chữ trong game bằng tiếng Anh theo thuật ngữ GDD §0; tên lá bài ở tooltip và `alt`, không in trên lá.",
+      "**Do** để mỗi ngón mất lại một vết máu trên bàn và một vết sẹo trên thớt, cố định suốt phiên.",
+      "**Do** phóng to nền xoáy và máu trên bàn bằng nearest-neighbor; giữ pixel vuông."
+    ],
+    "donts": [
+      "**Don't** dùng bàn nỉ xanh casino, UI neon, kính mờ hay thẻ phẳng bo tròn lớn.",
+      "**Don't** dùng đồng thau cho nút, chữ, tiêu đề hay viền bảng.",
+      "**Don't** để lộ mặt lá đang úp, hay để lộ sợi nào là Death Rope, kể cả khi hover hay trong hiệu ứng.",
+      "**Don't** in tên Latin, số hay vạch chức lên mặt bài.",
+      "**Don't** dùng màu `card-*` (xanh rêu, mốc, hoàng thổ) cho UI, hay màu UI lên mặt lá.",
+      "**Don't** đưa SVG lá bài vào Godot; chỉ PNG.",
+      "**Don't** phủ woodcut lên chữ VT323 hay lên PNG lá bài, hay làm mượt pixel của nền xoáy và máu trên bàn.",
+      "**Don't** dùng gradient hay blur trên vật minh họa in khắc; bóng của chúng là mảng mực phẳng.",
+      "**Don't** đặt bóng cứng lệch hay bóng màu dưới UI giấy; bóng luôn mềm, đen, rơi thẳng xuống.",
+      "**Don't** vẽ một cửa sổ chỉ người khác bấm được thành nút; dùng bảng trạng thái có đếm ngược."
+    ]
+  }
+}

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Five Pawns — Execution</title>
+<link rel="stylesheet" href="style.css">
+<style>
+	.screen { --ca: 2.6; }
+	.stage { position: absolute; inset: 0; transform: rotate(-.6deg) scale(1.02); z-index: 1; }
+	.table { left: 110px; top: 640px; width: 1700px; height: 560px; }
+	/* 4 vết máu của phiên: 3 của bạn, 1 của Nhà Cái; đặt chỗ không bị tay và bảng che */
+	.blood.b1 { left: 130px; top: 600px; }
+	.blood.b2 { left: 1380px; top: 640px; opacity: .75; }
+	.blood.b3 { left: 400px; top: 650px; opacity: .85; }
+	.blood.b4 { left: 1560px; top: 700px; opacity: .8; }
+
+	.rig { position: absolute; inset: 0; width: 1920px; height: 1080px; z-index: 5; }
+	/* Dây rung khi rê chuột/focus; cả màn căng thêm (CA + vignette). */
+	.rope { cursor: pointer; transform-box: fill-box; transform-origin: 50% 0; }
+	.rope .hl { opacity: 0; }
+	.rope:hover .hl, .rope:focus-visible .hl, .rope.is-hover .hl { opacity: 1; }
+	.rope:hover, .rope:focus-visible, .rope.is-hover { animation: rope-shake .09s steps(2) infinite alternate; }
+	.rope:focus-visible { outline: none; }
+	@keyframes rope-shake { from { transform: translateX(-2.5px) rotate(-.5deg); } to { transform: translateX(2.5px) rotate(.5deg); } }
+	.screen:has(.rope:hover, .rope:focus-visible, .rope.is-hover) { --ca: 3.2; }
+	.tension { position: absolute; inset: 0; z-index: 49; pointer-events: none; border-radius: 34px; opacity: 0; transition: opacity .3s cubic-bezier(.16, 1, .3, 1); background: radial-gradient(ellipse 80% 75% at 50% 45%, transparent 55%, rgba(30, 0, 0, .7) 100%); }
+	.screen:has(.rope:hover, .rope:focus-visible, .rope.is-hover) .tension { opacity: 1; }
+	@media (prefers-reduced-motion: reduce) { .rope:hover, .rope:focus-visible, .rope.is-hover { animation: none; } }
+
+	h1.verdict { position: absolute; left: 110px; top: 58px; z-index: 10; font-size: 58px; color: var(--diep); filter: url(#woodcut); }
+	.hud-tr { position: absolute; right: 110px; top: 64px; z-index: 10; text-align: right; line-height: 1.1; }
+	.hud-tr strong { font-family: "Bevan", serif; font-weight: 400; font-size: 30px; text-transform: uppercase; display: block; }
+
+	.ledger, .fingers { position: absolute; z-index: 10; padding: 22px 26px 24px; }
+	.ledger { left: 110px; top: 190px; width: 410px; transform: rotate(-2.2deg); }
+	.fingers { right: 110px; top: 190px; width: 410px; transform: rotate(1.6deg); }
+	.ledger h2, .fingers h2 { font-family: "Bevan", serif; font-weight: 400; font-size: 26px; text-transform: uppercase; letter-spacing: .02em; color: var(--muc); margin-bottom: 10px; }
+	.ledger li, .fingers li { list-style: none; font-family: "VT323", monospace; font-size: 27px; line-height: 1.18; color: #2e221a; display: flex; justify-content: space-between; gap: 14px; }
+	.ledger li b { font-weight: 400; color: var(--son); }
+	.ledger hr { border: 0; border-top: 2px dashed rgba(27, 19, 16, .5); margin: 10px 0; }
+	.ledger .total { font-family: "Bevan", serif; font-size: 40px; color: var(--son); line-height: 1.05; margin-top: 2px; }
+	.ledger .total small { display: block; font-family: "VT323", monospace; font-size: 27px; color: #2e221a; }
+
+	.fingers .hand-row { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+	.fingers li { padding: 3px 0; }
+	.fingers li.lost { color: #7a6a57; text-decoration: line-through; text-decoration-color: rgba(122, 18, 12, .7); }
+	.fingers li.now { color: var(--muc); background: rgba(176, 36, 26, .14); margin: 0 -10px; padding: 3px 10px; border-radius: 3px; }
+	.fingers li.now b { font-weight: 400; color: var(--son); }
+	.fingers .rule { font-size: 23px; color: #5a4a3a; margin-top: 8px; }
+
+	/* Cửa sổ Take the Blade: chỉ đồng đội bấm được, nên trên màn người lên thớt nó là đồng hồ đếm ngược. */
+	.take { position: absolute; left: 110px; bottom: 76px; z-index: 14; width: 470px; transform: rotate(1.2deg); padding: 16px 24px 18px; }
+	.take .name { font-size: 26px; }
+	.take .role { font-size: 26px; }
+	.take .count { font-family: "Bevan", serif; font-size: 44px; color: var(--son); line-height: 1; float: right; margin-left: 22px; }
+	.cut { position: absolute; right: 110px; bottom: 70px; z-index: 14; }
+	.cut .seal { font-size: 44px; padding: 22px 46px 24px; }
+	.cut .seal:disabled { cursor: not-allowed; background: var(--paper-tex), #6e2a22; color: #d9c3ae; } /* chỉ mặt nút xỉn đi; dòng giải thích vẫn đủ tương phản */
+</style>
+</head>
+<body>
+<main class="screen">
+	<canvas class="swirl" data-mode="blood" data-x="3"></canvas>
+	<div class="stage">
+		<div class="table"></div>
+		<canvas class="blood b1" data-seed="7" data-scale="6" width="44" height="34"></canvas>
+		<canvas class="blood b2" data-seed="3" data-scale="6" width="26" height="18"></canvas>
+		<canvas class="blood b3" data-seed="21" data-scale="6" width="30" height="20"></canvas>
+		<canvas class="blood b4" data-seed="13" data-scale="6" width="28" height="20"></canvas>
+	</div>
+
+	<h1 class="verdict carved ca">Execution</h1>
+	<div class="hud-tr hud ca"><strong>Stage I · Hand 6</strong><span class="dim">you are on the Block</span></div>
+
+	<!-- Khung đao, 6 dây gai, thớt, bàn tay: in khắc gỗ. Nét mực đen, màu phẳng, đường khắc trắng; không gradient. -->
+	<svg class="rig" viewBox="0 0 1920 1080" aria-label="The Blade hangs from six ropes over the Block; your index finger is under it">
+		<defs>
+			<pattern id="twist" width="12" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(32)">
+				<rect width="12" height="9" fill="#9a7843"/><rect width="12" height="3.2" fill="#3c2a14"/>
+			</pattern>
+			<pattern id="twist-hl" width="12" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(32)">
+				<rect width="12" height="9" fill="#d8b46e"/><rect width="12" height="3.2" fill="#5a3e1c"/>
+			</pattern>
+		</defs>
+
+		<g filter="url(#woodcut)" stroke-linejoin="round" stroke-linecap="round">
+			<!-- khung: gỗ màu phẳng, nét khắc thớ trắng -->
+			<g stroke="#1b1310" stroke-width="6">
+				<rect x="568" y="104" width="44" height="700" fill="#4a2a16"/>
+				<rect x="1308" y="104" width="44" height="700" fill="#4a2a16"/>
+				<rect x="530" y="86" width="860" height="62" fill="#5a331b"/>
+			</g>
+			<g stroke="#d8c294" stroke-width="2" fill="none" opacity=".75">
+				<path d="M580 170 q6 80 0 160 q-5 90 2 180 q4 90 -2 200"/><path d="M598 230 q-4 70 2 150 q4 80 -1 150"/>
+				<path d="M1320 160 q-5 90 1 180 q5 100 -2 200 q-3 90 3 170"/><path d="M1338 260 q4 80 -1 160 q-4 70 2 140"/>
+				<path d="M560 104 q120 -6 240 2 q130 8 260 -2 q150 -8 300 2"/><path d="M600 132 q160 6 320 -2 q160 -7 330 2"/>
+			</g>
+
+			<!-- thớt: gỗ cắt ngang thớ; vòng tuổi và vết chém khắc trắng; đúng 4 vết sẹo + 4 vệt máu khô (4 ngón đã mất) -->
+			<path d="M580 840 L580 912 A380 120 0 0 0 1340 912 L1340 840 Z" fill="#2a170d" stroke="#1b1310" stroke-width="6"/>
+			<g stroke="#d8c294" stroke-width="2" opacity=".5"><path d="M640 900 v52 M720 914 v58 M820 922 v62 M940 926 v64 M1060 924 v62 M1170 918 v58 M1270 904 v52"/></g>
+			<ellipse cx="960" cy="840" rx="380" ry="120" fill="#6b4424" stroke="#1b1310" stroke-width="6"/>
+			<g fill="none" stroke="#e6d3a8" stroke-width="2.2" opacity=".55">
+				<ellipse cx="960" cy="842" rx="318" ry="99"/><ellipse cx="963" cy="844" rx="250" ry="77"/>
+				<ellipse cx="957" cy="842" rx="180" ry="55"/><ellipse cx="961" cy="843" rx="110" ry="33"/><ellipse cx="960" cy="843" rx="44" ry="13"/>
+			</g>
+			<g stroke="#1b1310" stroke-width="7"><line x1="1100" y1="772" x2="1182" y2="800"/><line x1="1040" y1="902" x2="1122" y2="924"/><line x1="1186" y1="858" x2="1240" y2="878"/><line x1="700" y1="914" x2="766" y2="930"/></g>
+			<g stroke="#e6d3a8" stroke-width="1.6" opacity=".7"><line x1="1102" y1="768" x2="1184" y2="796"/><line x1="1042" y1="898" x2="1124" y2="920"/><line x1="1188" y1="854" x2="1242" y2="874"/><line x1="702" y1="910" x2="768" y2="926"/></g>
+			<g fill="#4a0806" stroke="#1b1310" stroke-width="2"><path d="M1124 800 q20 -6 34 4 q-8 14 -30 10 z"/><path d="M1090 918 q26 -8 40 6 q-14 12 -36 6 z"/><path d="M1220 880 q16 -4 26 6 q-10 8 -24 4 z"/><path d="M740 932 q18 -6 28 4 q-10 8 -24 4 z"/></g>
+
+			<!-- bóng đao: mảng mực phẳng, không blur -->
+			<path d="M700 806 Q960 850 1220 806 Q960 830 700 806 Z" fill="#120804" opacity=".55"/>
+
+			<!-- bàn tay: màu da phẳng, nét mực dày, nếp và bóng bằng nét khắc tay -->
+			<g stroke="#1b1310" stroke-width="6">
+				<rect x="300" y="784" width="330" height="150" fill="#1b1310"/>
+				<rect x="600" y="782" width="40" height="154" fill="#d8c294"/>
+				<path d="M660 790 q30 -40 104 -30 q20 6 10 22 q-40 4 -70 30 z" fill="#e0c497"/>
+				<rect x="630" y="790" width="220" height="142" rx="44" fill="#e0c497"/>
+				<rect x="806" y="796" width="196" height="40" rx="20" fill="#e0c497"/>
+				<rect x="968" y="803" width="26" height="26" rx="9" fill="#f0dcb8" stroke-width="3"/>
+				<rect x="812" y="842" width="56" height="34" rx="14" fill="#e0c497"/><rect x="834" y="840" width="40" height="38" rx="8" fill="#eadcb4" stroke-width="4"/>
+				<rect x="812" y="878" width="50" height="30" rx="12" fill="#e0c497"/><rect x="830" y="876" width="36" height="34" rx="8" fill="#eadcb4" stroke-width="4"/>
+				<rect x="806" y="908" width="44" height="24" rx="10" fill="#e0c497"/><rect x="820" y="906" width="32" height="28" rx="8" fill="#eadcb4" stroke-width="4"/>
+			</g>
+			<g stroke="#d8c294" stroke-width="2" fill="none" opacity=".6"><path d="M330 810 q140 -10 270 6 M330 850 q120 8 270 -4 M330 900 q150 -6 270 8"/></g>
+			<g stroke="#1b1310" stroke-width="2.6" fill="none">
+				<path d="M890 802 q6 14 0 28 M944 802 q6 14 0 28"/>
+				<path d="M660 900 l18 -14 M684 908 l18 -14 M708 914 l18 -14 M732 916 l18 -14 M756 916 l18 -14"/>
+				<path d="M842 842 v34 M852 842 v34 M862 842 v34 M838 880 v28 M848 880 v28 M826 910 v22 M836 910 v22"/>
+			</g>
+			<g fill="#7a120c"><path d="M836 842 h36 v14 q-8 10 -18 4 q-10 8 -18 -2 z"/><path d="M832 878 h32 v12 q-8 8 -16 2 q-8 6 -16 -2 z"/><path d="M822 908 h28 v10 q-6 6 -14 2 q-8 4 -14 -2 z"/></g>
+
+			<!-- 6 dây gai xoắn (stroke tô bằng pattern sọc chéo); dây IV đang được rê chuột -->
+			<g id="ropes">
+				<g class="rope" tabindex="0" role="button" aria-label="Rope I"><line x1="700" y1="148" x2="700" y2="446" stroke="transparent" stroke-width="34"/><line x1="700" y1="148" x2="700" y2="446" stroke="#1b1310" stroke-width="15"/><line class="hl" x1="700" y1="148" x2="700" y2="446" stroke="#eadcb4" stroke-width="19"/><line x1="700" y1="148" x2="700" y2="446" stroke="url(#twist)" stroke-width="10"/></g>
+				<g class="rope" tabindex="0" role="button" aria-label="Rope II"><line x1="804" y1="148" x2="804" y2="446" stroke="transparent" stroke-width="34"/><line x1="804" y1="148" x2="804" y2="446" stroke="#1b1310" stroke-width="15"/><line class="hl" x1="804" y1="148" x2="804" y2="446" stroke="#eadcb4" stroke-width="19"/><line x1="804" y1="148" x2="804" y2="446" stroke="url(#twist)" stroke-width="10"/></g>
+				<g class="rope" tabindex="0" role="button" aria-label="Rope III"><line x1="908" y1="148" x2="908" y2="446" stroke="transparent" stroke-width="34"/><line x1="908" y1="148" x2="908" y2="446" stroke="#1b1310" stroke-width="15"/><line class="hl" x1="908" y1="148" x2="908" y2="446" stroke="#eadcb4" stroke-width="19"/><line x1="908" y1="148" x2="908" y2="446" stroke="url(#twist)" stroke-width="10"/></g>
+				<g class="rope is-hover" tabindex="0" role="button" aria-label="Rope IV"><line x1="1012" y1="148" x2="1012" y2="446" stroke="transparent" stroke-width="34"/><line x1="1012" y1="148" x2="1012" y2="446" stroke="#1b1310" stroke-width="15"/><line class="hl" x1="1012" y1="148" x2="1012" y2="446" stroke="#eadcb4" stroke-width="19"/><line x1="1012" y1="148" x2="1012" y2="446" stroke="url(#twist-hl)" stroke-width="10"/></g>
+				<g class="rope" tabindex="0" role="button" aria-label="Rope V"><line x1="1116" y1="148" x2="1116" y2="446" stroke="transparent" stroke-width="34"/><line x1="1116" y1="148" x2="1116" y2="446" stroke="#1b1310" stroke-width="15"/><line class="hl" x1="1116" y1="148" x2="1116" y2="446" stroke="#eadcb4" stroke-width="19"/><line x1="1116" y1="148" x2="1116" y2="446" stroke="url(#twist)" stroke-width="10"/></g>
+				<g class="rope" tabindex="0" role="button" aria-label="Rope VI"><line x1="1220" y1="148" x2="1220" y2="446" stroke="transparent" stroke-width="34"/><line x1="1220" y1="148" x2="1220" y2="446" stroke="#1b1310" stroke-width="15"/><line class="hl" x1="1220" y1="148" x2="1220" y2="446" stroke="#eadcb4" stroke-width="19"/><line x1="1220" y1="148" x2="1220" y2="446" stroke="url(#twist)" stroke-width="10"/></g>
+			</g>
+
+			<!-- lưỡi đại đao: mảng mực sẫm, lưỡi màu phẳng, đường khắc sáng song song lưỡi -->
+			<path d="M640 440 L1280 440 L1302 470 Q960 700 618 470 Z" fill="#2b2622" stroke="#1b1310" stroke-width="7"/>
+			<path d="M1302 470 Q960 700 618 470 L642 488 Q960 666 1278 488 Z" fill="#cfc6b6" stroke="#1b1310" stroke-width="3"/>
+			<g fill="none" stroke="#d8c294" stroke-width="2.4" opacity=".85">
+				<path d="M680 462 Q960 560 1240 462"/><path d="M720 458 Q960 535 1200 458"/><path d="M770 454 Q960 512 1150 454"/>
+			</g>
+			<g fill="none" stroke="#1b1310" stroke-width="1.6" opacity=".6"><path d="M700 500 Q960 630 1220 500"/><path d="M760 520 Q960 620 1160 520"/></g>
+			<path d="M906 586 q20 8 38 2 q18 -6 32 4 q-8 10 -30 8 q-22 -2 -40 -14 z" fill="#6a0f0a" stroke="#1b1310" stroke-width="2"/>
+			<g fill="#2b2622" stroke="#d8c294" stroke-width="4"><circle cx="700" cy="446" r="10"/><circle cx="804" cy="446" r="10"/><circle cx="908" cy="446" r="10"/><circle cx="1012" cy="446" r="10"/><circle cx="1116" cy="446" r="10"/><circle cx="1220" cy="446" r="10"/></g>
+		</g>
+
+		<!-- nhãn dây trên xà (chữ giữ sắc nét, không qua bộ lọc) -->
+		<g font-family="Bevan, serif" font-size="22" text-anchor="middle">
+			<g fill="#d8c294" stroke="#1b1310" stroke-width="2.5"><rect x="682" y="98" width="36" height="36" rx="3"/><rect x="786" y="98" width="36" height="36" rx="3"/><rect x="890" y="98" width="36" height="36" rx="3"/><rect x="1098" y="98" width="36" height="36" rx="3"/><rect x="1202" y="98" width="36" height="36" rx="3"/></g>
+			<rect x="990" y="94" width="44" height="44" rx="3" fill="#b0241a" stroke="#eadcb4" stroke-width="3"/>
+			<g fill="#1b1310"><text x="700" y="124">I</text><text x="804" y="124">II</text><text x="908" y="124">III</text><text x="1116" y="124">V</text><text x="1220" y="124">VI</text></g>
+			<text x="1012" y="125" fill="#eadcb4" font-size="24">IV</text>
+		</g>
+
+		<!-- con trỏ dao găm chỉ vào dây IV -->
+		<g transform="translate(1046 286) rotate(-58)" stroke="#1b1310" stroke-width="4" stroke-linejoin="round">
+			<path d="M0 0 L96 -9 L114 0 L96 9 Z" fill="#cfc6b6"/>
+			<line x1="10" y1="0" x2="98" y2="0" stroke="#d8c294" stroke-width="1.6"/>
+			<rect x="-12" y="-16" width="12" height="32" rx="2" fill="#c49a45"/>
+			<rect x="-56" y="-8" width="44" height="16" rx="5" fill="#6e150f"/>
+		</g>
+	</svg>
+	<div class="tension"></div>
+
+	<section class="plaque ledger" aria-label="Hand 6 verdict">
+		<h2>Hand 6 verdict</h2>
+		<ul>
+			<li><span>Final</span><span>Pair of Black Advisors</span></li>
+			<li><span>Taken by</span><span>The House</span></li>
+		</ul>
+		<hr>
+		<ul>
+			<li><span>Fewest tricks</span><b>You · 1</b></li>
+			<li><span>Final was a Pair</span><b>3 Death Ropes</b></li>
+		</ul>
+		<hr>
+		<div class="total">3 of 6<small>ropes drop the Blade · 50%</small></div>
+	</section>
+
+	<section class="plaque fingers" aria-label="Your fingers">
+		<div class="hand-row"><span data-hand="pinky,ring,middle" data-size="72"></span><h2>On the Block: You</h2></div>
+		<ul>
+			<li class="lost"><span>Pinky</span><span>−1 charm slot</span></li>
+			<li class="lost"><span>Ring</span><span>no auto-sort</span></li>
+			<li class="lost"><span>Middle</span><span>no history</span></li>
+			<li class="now"><span><b>Index</b> · now</span><span>tremor, no pings</span></li>
+			<li><span>Thumb</span><span>eliminated</span></li>
+		</ul>
+		<p class="rule hud">The thumb goes on the Block last.</p>
+	</section>
+
+	<div class="plaque take" role="status" aria-live="polite">
+		<span class="count">4s</span>
+		<div class="name">Tú may take<br>the Blade</div>
+		<div class="role">teammate · 5 fingers</div>
+	</div>
+	<div class="cut"><button class="seal" disabled>Cut rope IV<span class="sub">after Tú decides · 4s</span></button></div>
+
+	<p class="synthetic">illustrative data</p>
+	<div class="crt"></div>
+</main>
+<script src="fx.js"></script>
+</body>
+</html>

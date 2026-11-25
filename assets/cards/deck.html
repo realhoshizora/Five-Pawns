@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Five Pawns deck</title>
+<style>
+	body { margin: 0; width: 1400px; height: 1060px; background: #0e0a07; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+	.row { display: flex; justify-content: center; gap: 22px; }
+	object { display: block; filter: drop-shadow(0 10px 14px rgba(0,0,0,.75)); }
+</style>
+</head>
+<body>
+	<div class="row" id="red"></div>
+	<div class="row" id="black"></div>
+	<script>
+		const names = ["general", "advisor", "elephant", "chariot", "horse", "cannon", "pawn"];
+		for (const suit of ["red", "black"])
+			for (const n of names)
+				document.getElementById(suit).insertAdjacentHTML("beforeend", `<object data="${suit}_${n}.svg" type="image/svg+xml" width="140" height="478"></object>`);
+	</script>
+</body>
+</html>

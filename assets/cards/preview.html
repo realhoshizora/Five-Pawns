@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Card preview</title>
+<style>
+	body { margin: 0; width: 1400px; background: #0e0a07; color: #d8c294; font: 22px "VT323", monospace; display: flex; gap: 48px; align-items: flex-end; padding: 40px 60px; height: 1000px; box-sizing: border-box; }
+	figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+	object { display: block; filter: drop-shadow(0 12px 18px rgba(0,0,0,.7)); }
+	img.ref { height: 900px; image-rendering: auto; }
+</style>
+</head>
+<body>
+	<figure><object data="red_general.svg" type="image/svg+xml" width="300" height="900"></object><figcaption>A · 120×360 (spec)</figcaption></figure>
+	<figure><object data="red_general_410.svg" type="image/svg+xml" width="264" height="902"></object><figcaption>B · 120×410</figcaption></figure>
+	<figure><object data="red_general_410.svg" type="image/svg+xml" width="110" height="376"></object><figcaption>B · hand 110</figcaption></figure>
+	<figure><img class="ref" src="_work/ref_general.png" alt="reference crop"><figcaption>reference</figcaption></figure>
+</body>
+</html>

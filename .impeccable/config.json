@@ -1,0 +1,53 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "mockups/title.html"
+        ],
+        "createdAt": "2026-11-19T03:20:42.711Z",
+        "reason": "brief pins chromatic aberration (CRT post-process): .ca text-shadow is red/cyan channel split, not a glow"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "mockups/table.html"
+        ],
+        "createdAt": "2026-11-19T03:22:04.100Z",
+        "reason": "brief pins chromatic aberration (CRT post-process): .ca text-shadow is red/cyan channel split, not a glow"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "mockups/roulette.html"
+        ],
+        "createdAt": "2026-11-19T03:22:05.046Z",
+        "reason": "brief pins chromatic aberration (CRT post-process): .ca text-shadow is red/cyan channel split, not a glow"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "mockups/execution.html"
+        ],
+        "createdAt": "2026-11-19T03:51:31.706Z",
+        "reason": "brief pins chromatic aberration (CRT post-process): .ca text-shadow is red/cyan channel split, not a glow"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "mockups/deck.html"
+        ],
+        "createdAt": "2026-11-19T04:13:49.320Z",
+        "reason": "brief pins chromatic aberration (CRT post-process): .ca text-shadow is red/cyan channel split, not a glow"
+      }
+    ]
+  }
+}
